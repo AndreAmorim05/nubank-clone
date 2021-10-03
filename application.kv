@@ -1,7 +1,352 @@
 #:kivy 2.0.0
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
 <Application>:
+    ScrollView:
+        bar_width: 0
+        MDGridLayout:
+            cols: 1
+            adaptive_height: True
+            rows_default_height: dp(170)
+            md_bg_color: 1,1,1,1
+            MDBoxLayout:
+                orientation: 'vertical'
+                md_bg_color: app.theme_cls.primary_color
+                size_hint_y: None
+                height: dp(120)
+                MDToolbar:
+                    md_bg_color: app.theme_cls.primary_color
+                    specific_text_color: 1,1,1,1
+                    left_action_items: [['account-outline', lambda x: print('Clicked')]]
+                    right_action_items: [['eye', lambda x: print('Clicked')], ['help-circle-outline', lambda x: print('Clicked')], ['email-plus-outline', lambda x: print('Clicked')]]
+                MDLabel:
+                    text: 'Olá, Usuário'
+                    color: 1,1,1,1
+                    font_style: 'Subtitle2'
+                    font_size: dp(16)
+                    padding_x: dp(18)
+            MDBoxLayout:
+                size_hint_y: None
+                height: dp(100)
+                orientation: 'vertical'
+                padding: '20dp'
+                MDBoxLayout:
+                    MDLabel:
+                        text: 'Conta'
+                        font_style: 'Subtitle2'
+                        font_size: dp(17)
+                    MDIcon:
+                        icon: 'arrow-right'
+                        size_hint_x: None
+                        size: self.texture_size
+                MDLabel:
+                    font_style: 'H6'
+                    text: 'R$ 500,00'
+            MDBoxLayout:
+                size_hint_y: None
+                height: dp(85)
+                ScrollView:
+                    bar_width: 0
+                    do_scroll_y: False
+                    MDBoxLayout:
+                        adaptive_width: True
+                        spacing: dp(5)
+                        Separator:
+                            size_hint_x: None
+                            width: dp(7)
+                        ShortCuts:
+                            text: 'Área Pix'
+                            icon: 'autorenew'
+                        ShortCuts:
+                            text: 'Pagar'
+                            icon: 'barcode'
+                        ShortCuts:
+                            text: 'Transferir'
+                            icon: 'cash-refund'
+                        ShortCuts:
+                            text: 'Depositar'
+                            icon: 'cash-plus'
+                        ShortCuts:
+                            text: 'Pegar\nemprestado'
+                            icon: 'hand-heart-outline'
+                        ShortCuts:
+                            text: 'Recarga de\ncelular'
+                            icon: 'cellphone'
+                        ShortCuts:
+                            text: 'Cobrar'
+                            icon: 'barcode'
+                        ShortCuts:
+                            text: 'Doação'
+                            icon: 'heart-outline'
+                        ShortCuts:
+                            text: 'Transferir\nInternac.'
+                            icon: 'web'
+                        ShortCuts:
+                            text: 'Encontrar\natalhos'
+                            icon: 'help-circle-outline'
+
+            Separator:
+            MDBoxLayout:
+                size_hint_y: None
+                height: dp(43)
+                padding: dp(22), 0, dp(22), 0
+                MDFillRoundFlatIconButton:
+                    md_bg_color: get_color_from_hex('#eaeaea')
+                    theme_text_color: "Custom"
+                    text_color: 0, 0, 0, 1
+                    line_color: 1, 1, 1, 1
+                    size_hint: 1, 1
+                    icon: 'credit-card-outline'
+                    icon_color: 0, 0, 0, 1
+                    text: 'Meus cartões'
+
+            Separator:
+
+            MDBoxLayout:
+                size_hint_y: None
+                height: dp(75)
+                ScrollView:
+                    bar_width: 0
+                    do_scroll_y: False
+                    MDBoxLayout:
+                        adaptive_width: True
+                        spacing: dp(15)
+                        Separator:
+                            size_hint_x: None
+                            width: dp(8)
+                        CustomButton:
+                            text: 'Você tem [color=#7b1fa2]R$ 25.000,00[/color] disponíveis\npara empréstimo'
+                        CustomButton:
+                            text: '[color=#7b1fa2]Não parcelou e se arrependeu?[/color]\nParcele suas compras no app.'
+                        CustomButton:
+                            text: 'Salve seus amigos da burocracia.\n[color=#7b1fa2]Faça um convite para o Nubank.[/color]'
+                
+            Separator:
+                height: dp(23)
+
+            # Cartão de crédito
+            MDCard:
+                orientation: 'vertical'
+                elevation: dp(.5)
+                md_bg_color: 1,1,1,1
+                size_hint_y: None
+                height: dp(170)
+                spacing: dp(1)
+                padding: dp(20)
+                MDIcon:
+                    icon: 'credit-card-outline'
+                MDBoxLayout:
+                    MDLabel:
+                        text: 'Cartão de crédito'
+                        font_style: 'Subtitle2'
+                        font_size: dp(16)
+                    MDIcon:
+                        icon: 'arrow-right'
+                        size_hint_x: None
+                        size: self.texture_size
+                        theme_text_color: 'Custom'
+                        text_color: get_color_from_hex('#525252')
+                MDLabel:
+                    text: 'Fatura atual'
+                    font_style: 'Subtitle2'
+                    font_size: dp(13)
+                    theme_text_color: 'Custom'
+                    text_color: get_color_from_hex('#525252')
+
+
+                MDLabel:
+                    text: 'R$ 500,00'
+                    font_style: 'Subtitle2'
+                    font_size: dp(18)
+
+                MDLabel:
+                    text: 'Limite disponível de R$ 1.000,00'
+                    font_style: 'Subtitle2'
+                    font_size: dp(11)
+                    theme_text_color: 'Custom'
+                    text_color: get_color_from_hex('#525252')
+            
+            # Empréstimo 
+            MDCard:
+                orientation: 'vertical'
+                elevation: dp(.5)
+                md_bg_color: 1,1,1,1
+                size_hint_y: None
+                height: dp(130)
+                padding: dp(20)
+                spacing: dp(5)
+                MDIcon:
+                    icon: 'hand-heart-outline'
+                MDBoxLayout:
+                    MDLabel:
+
+                        text: 'Empréstimo'
+                        font_style: 'Subtitle2'
+                        font_size: dp(16)
+                    MDIcon:
+                        icon: 'arrow-right'
+                        size_hint_x: None
+                        size: self.texture_size
+                        theme_text_color: 'Custom'
+                        text_color: get_color_from_hex('#525252')
+                MDLabel:
+                    text: 'Valor disponível de até'
+                    font_style: 'Subtitle2'
+                    font_size: dp(11)
+                    theme_text_color: 'Custom'
+                    text_color: get_color_from_hex('#525252')
+
+                MDLabel:
+                    text: 'R$ 25.000,00'
+                    font_style: 'Subtitle2'
+                    font_size: dp(12)
+                    theme_text_color: 'Custom'
+                    text_color: get_color_from_hex('#525252')
+
+            # Seguro de vida
+            MDCard:
+                orientation: 'vertical'
+                elevation: dp(.5)
+                md_bg_color: 1,1,1,1
+                size_hint_y: None
+                height: dp(130)
+                padding: dp(20)
+                spacing: dp(5)
+                MDIcon:
+                    icon: 'heart-outline'
+                MDBoxLayout:
+                    MDLabel:
+                        text: 'Seguro de vida'
+                        font_style: 'Subtitle2'
+                        font_size: dp(16)
+                    MDIcon:
+                        icon: 'arrow-right'
+                        size_hint_x: None
+                        size: self.texture_size
+                        theme_text_color: 'Custom'
+                        text_color: get_color_from_hex('#525252')
+                MDLabel:
+                    text: 'Conheça Nubanck Vida: um seguro simples e que \ncabe no bolso'
+                    font_style: 'Subtitle2'
+                    font_size: dp(11)
+                    theme_text_color: 'Custom'
+                    text_color: get_color_from_hex('#525252')
+            
+            Separator:
+                height: dp(2)
+            # Descubra mais
+            MDCard:
+                orientation: 'vertical'
+                elevation: dp(0)
+                md_bg_color: 1,1,1,1
+                size_hint_y: None
+                height: dp(230)
+                padding: dp(20),0,0,dp(20)
+                MDLabel:
+                    text: 'Descubra mais'
+                    font_style: 'Subtitle2'
+                    font_size: dp(15)
+                    size_hint_y: None
+                    size: self.texture_size[0], self.texture_size[1] + dp(20)
+
+                Separator:
+
+                MDBoxLayout:
+                    size_hint_y: None
+                    height: dp(150)
+                    ScrollView:
+                        bar_width: 0
+                        do_scroll_y: False
+                        MDBoxLayout:
+                            adaptive_width: True
+                            spacing: dp(10)
+
+                            CustomCard:
+                                text: 'Indique seus amigos'
+                                description: 'Mostre aos seus amigos como é\nfácil ter uma vida sem burocracia.'
+                                btntext: 'Indicar amigos'
+                            CustomCard:
+                                text: 'WhatsApp'
+                                description: 'Pagamentos seguros, rápidos e sem\ntarifa. A experiência Nubank sem\nnem sair da conversa'
+                                btntext: 'Quero conhecer'
+
+<ShortCuts@MDCard>:
+    text: 'Label'
+    icon: 'calendar'
+    size_hint: None, None
+    height: dp(80)
+    width: dp(70)
+    elevation: 0
+    md_bg_color: 1,1,1,0
+
     MDBoxLayout:
+        orientation: 'vertical'
+        MDIconButton:
+            icon: root.icon
+            theme_text_color: "Custom"
+            text_color: 0,0,0,1
+            md_bg_color: get_color_from_hex('#eaeaea')
+            pos_hint: {'center_x': .5}
         MDLabel:
-            text: "Application"
-            halign: "center"
-            font_style: 'H1'
+            text: root.text
+            halign: 'center'
+            size_hint_y: .8
+            font_style: 'Subtitle2'
+            font_size: dp(11)
+
+<CustomButton@MDCard>:
+    md_bg_color: get_color_from_hex('#eaeaea')
+    radius: [18,18,18,18]
+    text: ''
+    size_hint_x: None
+    width: dp(262.5)
+    elevation: 0
+    MDLabel:
+        text: root.text
+        padding_x: dp(20)
+        font_style: 'Subtitle1'
+        font_size: dp(13)
+        markup: True
+
+<CustomCard@MDCard>:
+    md_bg_color: get_color_from_hex('#eaeaea')
+    radius: [12,12,12,12]
+    text: ''
+    description: ''
+    btntext: ''
+    size_hint_x: None
+    width: dp(255)
+    elevation: 0
+    orientation: 'vertical'
+    spacing: dp(8)
+    MDLabel:
+        text: root.text
+        padding_x: dp(20)
+        font_style: 'Subtitle2'
+        font_size: dp(15)
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDLabel:
+            text: root.description
+            padding_x: dp(20)
+            font_style: 'Subtitle2'
+            font_size: dp(13)
+            theme_text_color: 'Custom'
+            text_color: get_color_from_hex('#525252')
+            size_hint_y: None
+            size: self.texture_size[0], self.texture_size[1] + dp(30)
+    MDBoxLayout:
+        padding: dp(20)
+        MDFillRoundFlatButton:
+            text: root.btntext
+            theme_text_color: "Custom"
+            text_color: get_color_from_hex("#ffffff")
+            md_bg_color: get_color_from_hex('#7b1fa2')
+            font_style: 'Subtitle2'
+            font_size: dp(13)
+            bold: True
+
+        
+<Separator@Widget>:
+    size_hint_y: None
+    height: dp(15)
